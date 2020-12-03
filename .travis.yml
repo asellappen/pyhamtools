@@ -27,9 +27,11 @@ install:
   - pip install -r requirements-docs.txt
   - pip install -r requirements-pytest.txt
   - pip install codecov
+
 # run tests
 script:
-  - pytest --cov=./
+  - pytest-cov>=2.4.0,<2.6 --cov=./
+ ## - pytest --cov=./
   - if [[ $TRAVIS_PYTHON_VERSION == 3.8 ]]; then codecov; fi
   - cd docs
   # build the docs on 2.7 and 3.6 (sphinx requires 2.7 or >=3.4)
